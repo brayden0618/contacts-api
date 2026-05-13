@@ -16,27 +16,62 @@
         "summary": "Get all contacts",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Successfully retrieved all contacts"
           }
         }
       },
       "post": {
-        "summary": "Create contact",
+        "summary": "Create a new contact",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "favoriteColor": {
+                    "type": "string"
+                  },
+                  "birthday": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "firstName",
+                  "lastName",
+                  "email",
+                  "favoriteColor",
+                  "birthday"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Contact created successfully"
           }
         }
       }
     },
     "/contacts/{id}": {
       "get": {
-        "summary": "Get contact by ID",
+        "summary": "Get a contact by ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
+            "description": "MongoDB ObjectId of the contact",
             "schema": {
               "type": "string"
             }
@@ -44,23 +79,79 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Successfully retrieved contact"
           }
         }
       },
       "put": {
-        "summary": "Update contact",
+        "summary": "Update a contact",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "MongoDB ObjectId of the contact",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "favoriteColor": {
+                    "type": "string"
+                  },
+                  "birthday": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "firstName",
+                  "lastName",
+                  "email",
+                  "favoriteColor",
+                  "birthday"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
-            "description": "Updated"
+            "description": "Contact updated successfully"
           }
         }
       },
       "delete": {
-        "summary": "Delete contact",
+        "summary": "Delete a contact",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "MongoDB ObjectId of the contact",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Deleted"
+            "description": "Contact deleted successfully"
           }
         }
       }
