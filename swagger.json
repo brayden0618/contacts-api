@@ -1,0 +1,69 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Contacts API",
+    "version": "1.0.0",
+    "description": "API for managing contacts"
+  },
+  "servers": [
+    {
+      "url": "https://contacts-api-tl79.onrender.com"
+    }
+  ],
+  "paths": {
+    "/contacts": {
+      "get": {
+        "summary": "Get all contacts",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create contact",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/contacts/{id}": {
+      "get": {
+        "summary": "Get contact by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update contact",
+        "responses": {
+          "204": {
+            "description": "Updated"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete contact",
+        "responses": {
+          "200": {
+            "description": "Deleted"
+          }
+        }
+      }
+    }
+  }
+}
